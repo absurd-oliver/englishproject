@@ -1,0 +1,28 @@
+body {
+text-align: center;
+margin: auto;
+}
+
+img {
+	width: calc(100vw - 40px);
+	height: calc(100vw - 40px);
+	margin: 20px;
+	box-sizing: border-box;
+	object-fit: cover;
+	border-radius: 50px;
+}
+
+.audioControls {
+	transform: scale(2,2);
+	background: transparent;
+	border: transparent;
+}
+
+#backButton {
+	margin-right: 100px;
+}
+
+#forwardButton {
+	margin-left: 100px;
+}
+
