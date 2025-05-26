@@ -1,0 +1,1 @@
+all icons in the "icon files" folder are downloaded from: https://www.svgrepo.com/collection/css-gg-interface-icons/

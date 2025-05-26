@@ -1,25 +1,50 @@
 <!DOCTYPE html>
-<html lang='en'>
-  <head>
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>English Music Project</title>
-    <link rel=stylesheet href='styles.css'>
-    <script src='code.js' defer></script>
-  </head>
-  <body>
-	<img src='audiofiletest1.jpg' id='audioImage'>
-		<button id='backButton' class='audioControls'>⏪</button>
-	<button id='forwardButton' class='audioControls'>⏩</button>
-	<br>
-	<br>
-	<br>
-	<audio controls>
-    <source id= 'audioSource' src="audiofiletest1.m4a" 	type="audio/mp4">
-    	Your browser does not support the audio element.
-  	</audio>
-	<br>
-	<br>
-	<pre id='textElement'></pre>
-    
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>English Music Project</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="code.js" defer></script>
+</head>
+<body>
+
+<header>
+  <select id="songSelector" aria-label="Select Song">
+    <option value="0">Song 1</option>
+    <option value="1">Song 2</option>
+  </select>
+
+  <label class="switch" for="themeToggle">
+    <input type="checkbox" id="themeToggle" />
+    <span class="slider"></span>
+  </label>
+</header>
+
+<main>
+  <img id="audioImage" src="image files/audiofiletest1.jpg" alt="Song artwork" />
+  
+  <div class="controls">
+    <button id="backButton" aria-label="Previous Song">
+      <img src="icon files/back.svg" alt="Back" class="icon" />
+    </button>
+
+    <button id="playPauseButton" aria-label="Play/Pause">
+      <img id="playIcon" src="icon files/play.svg" alt="Play" class="icon" />
+    </button>
+
+    <button id="forwardButton" aria-label="Next Song">
+      <img src="icon files/forward.svg" alt="Forward" class="icon" />
+    </button>
+  </div>
+
+  <audio id="audioElement">
+    <source id="audioSource" src="audio files/audiofiletest1.m4a" type="audio/mp4" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <pre id="textElement">placeholder text one</pre>
+</main>
+
+</body>
 </html>
