@@ -1,14 +1,54 @@
 const songs = [
   {
-    audio: 'audio files/audiofiletest1.m4a',
-    image: 'image files/audiofiletest1.jpg',
-    text: 'placeholder text one',
+    audio: 'audio files/placeholderAudioFileName1.mp3',
+    image: 'image files/placeholderImageFileName1.jpg',
+    text: 'placeholder text one'
   },
   {
-    audio: 'audio files/audiofiletest2.m4a',
-    image: 'image files/audiofiletest2.png',
-    text: 'placeholder text two',
+    audio: 'audio files/placeholderAudioFileName2.mp3',
+    image: 'image files/placeholderImageFileName2.jpg',
+    text: 'placeholder text two'
   },
+  {
+    audio: 'audio files/placeholderAudioFileName3.mp3',
+    image: 'image files/placeholderImageFileName3.jpg',
+    text: 'placeholder text three'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName4.mp3',
+    image: 'image files/placeholderImageFileName4.jpg',
+    text: 'placeholder text four'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName5.mp3',
+    image: 'image files/placeholderImageFileName5.jpg',
+    text: 'placeholder text five'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName6.mp3',
+    image: 'image files/placeholderImageFileName6.jpg',
+    text: 'placeholder text six'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName7.mp3',
+    image: 'image files/placeholderImageFileName7.jpg',
+    text: 'placeholder text seven'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName8.mp3',
+    image: 'image files/placeholderImageFileName8.jpg',
+    text: 'placeholder text eight'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName9.mp3',
+    image: 'image files/placeholderImageFileName9.jpg',
+    text: 'placeholder text nine'
+  },
+  {
+    audio: 'audio files/placeholderAudioFileName0.mp3',
+    image: 'image files/placeholderImageFileName0.jpg',
+    text: 'placeholder text ten'
+  }
 ];
 
 const imgDisplay = document.getElementById('audioImage');
@@ -22,21 +62,14 @@ const playPauseButton = document.getElementById('playPauseButton');
 const playIcon = document.getElementById('playIcon');
 
 const songSelector = document.getElementById('songSelector');
-const themeToggle = document.getElementById('themeToggle');
 
-let currentSongIndex = 0;
+var currentSongIndex = 0;
 
-// Load last saved song & theme from localStorage
+// Load last saved song from localStorage
 window.addEventListener('DOMContentLoaded', () => {
   const savedSongIndex = parseInt(localStorage.getItem('selectedSong'));
   if (!isNaN(savedSongIndex) && savedSongIndex >= 0 && savedSongIndex < songs.length) {
     currentSongIndex = savedSongIndex;
-  }
-
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark');
-    themeToggle.checked = true;
   }
 
   songSelector.value = currentSongIndex;
@@ -82,15 +115,28 @@ function updatePlayIcon() {
 
 // Back / Forward buttons
 backButton.addEventListener('click', () => {
-  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-  songSelector.value = currentSongIndex;
-  loadSong(currentSongIndex);
+  if (currentSongIndex != 0){
+      currentSongIndex = (currentSongIndex - 1);
+      songSelector.value = currentSongIndex;
+      loadSong(currentSongIndex);
+    } else {
+      currentSongIndex = 10;
+      songSelector.value = currentSongIndex;
+      loadSong(currentSongIndex);
+    }
+  
 });
 
 forwardButton.addEventListener('click', () => {
-  currentSongIndex = (currentSongIndex + 1) % songs.length;
-  songSelector.value = currentSongIndex;
-  loadSong(currentSongIndex);
+  if (currentSongIndex > 10){
+      currentSongIndex = (currentSongIndex + 1);
+      songSelector.value = currentSongIndex;
+      loadSong(currentSongIndex);
+    } else {
+      currentSongIndex = 0;
+      songSelector.value = currentSongIndex;
+      loadSong(currentSongIndex);
+    }
 });
 
 // Dropdown change listener
@@ -99,15 +145,6 @@ songSelector.addEventListener('change', (e) => {
   loadSong(currentSongIndex);
 });
 
-// Theme toggle listener
-themeToggle.addEventListener('change', (e) => {
-  if (e.target.checked) {
-    document.body.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.body.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  }
 });
 
 // Save selected song to localStorage whenever it changes
