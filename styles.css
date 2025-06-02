@@ -8,11 +8,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark {
-  background: #121212;
-  color: white;
-}
-
 header {
   display: flex;
   justify-content: center;
@@ -30,11 +25,6 @@ select#songSelector {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark select#songSelector {
-  background-color: #222;
-  color: white;
-  border-color: #555;
-}
 
 main {
   margin: 20px auto;
@@ -73,11 +63,7 @@ button {
   transition: filter 0.3s ease;
   filter: none;
   pointer-events: none; /* so clicks hit button, not image */
-}
 
-body.dark .icon {
-  filter: invert(1);
-}
 
 /* Apple-style toggle switch */
 .switch {
