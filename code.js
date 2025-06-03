@@ -62,6 +62,10 @@ const playPauseButton = document.getElementById("playPauseButton");
 const playIcon = document.getElementById("playIcon");
 
 const songSelector = document.getElementById("songSelector");
+const devConsole = document.getElementById("devLog");
+const devConsoleButton = document.getElementById("devLogButton");
+const devConsoleButtonText = document.getElementById("devLogButtonText");
+const devToggle = false;
 
 var currentSongIndex = 0;
 
@@ -166,8 +170,45 @@ forwardButton.addEventListener("click", () => {
 // Dropdown change listener
 songSelector.addEventListener("change", (e) => {
   console.log("songSelector event listener started");
-  currentSongIndex = parseInt(e.target.value);
-  console.log("currentSongIndex set to: " + currentSongIndex);
-  console.log("calling loadSong() with parameter: " + currentSongIndex);
-  loadSong(currentSongIndex);
+  console.log("starting dev check if statement");
+  if (songSelector.value != 10){
+    console.log("dev check: false");
+    devConsoleButton.classList.add("hidden");
+    console.log("added hidden class to devConsoleButton");
+    currentSongIndex = parseInt(e.target.value);
+    console.log("currentSongIndex set to: " + currentSongIndex);
+    console.log("calling loadSong() with parameter: " + currentSongIndex);
+    loadSong(currentSongIndex);
+  } else {
+    devConsoleButton.classList.remove('hidden');
+  }
 });
+
+devConsoleButton.addEventListener("click", () => {
+  console.log("starting devConsoleButton event listener and if statement");
+  if (devToggle === true){
+    devToggle = false;
+    console.log("devToggle set to false, was: true");
+    devConsole.classList.add("hidden");
+    devConsoleButton.classList.add("hidden");
+    devConsoleButtonText.classList.add("hidden");
+    console.log("added hidden class to devConsole");
+    devConsoleButtonText.textContent = 'show dev log';
+    console.log("changed devConsoleButton text to: show dev log");
+  } else {
+    devToggle = true;
+    console.log("devToggle set to true, was: false");
+    devConsole.classList.remove("hidden");
+    devConsoleButton.classList.remove("hidden");
+    devConsoleButtonText.classList.remove("hidden");
+    console.log("removed hidden class from devConsole");
+    devConsoleButtonText.textContent = 'hide dev log';
+    console.log("changed devConsoleButton text to: hide dev log");
+  }
+  
+});
+
+function logMain(info){
+  console.log(info);
+  devLog.textContent += info + '\n'
+}
