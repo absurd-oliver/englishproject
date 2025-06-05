@@ -201,5 +201,6 @@ devConsoleButton.addEventListener("click", () => {
 
 function logMain(info) {
   console.log(info);
-  devLog.textContent += info + "\n";
+  let prev = devLog.textContent + "\n";
+  devLog.textContent = (prev + "- " + info + "\n");
 }
