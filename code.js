@@ -200,7 +200,7 @@ devConsoleButton.addEventListener("click", () => {
 });
 
 function logMain(info) {
-  console.log(info);
+  console.log("- " + info);
   let prev = devLog.textContent + "\n";
   devLog.textContent = (prev + "- " + info + "\n");
 }
