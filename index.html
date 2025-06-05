@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="backgroundFilter">
+      <button id="devLogButton" class="hidden">show/hide dev log</button>
       <header>
         <select id="songSelector" aria-label="Select Song">
           <option value="0">Song 1</option>
@@ -30,14 +31,15 @@
           id="audioImage"
           src="image files/placeholderImgFileName0.jpg"
           alt="Song artwork"
+          onerror="this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg';"
         />
 
         <div class="controls">
-          <button id="backButton" aria-label="Previous Song">
+          <button id="backButton" aria-label="Previous Song" class="controlButtons">
             <img src="icon files/back.svg" alt="Back" class="icon" />
           </button>
 
-          <button id="playPauseButton" aria-label="Play/Pause">
+          <button id="playPauseButton" aria-label="Play/Pause" class="controlButtons">
             <img
               id="playIcon"
               src="icon files/play.svg"
@@ -46,7 +48,7 @@
             />
           </button>
 
-          <button id="forwardButton" aria-label="Next Song">
+          <button id="forwardButton" aria-label="Next Song" class="controlButtons">
             <img src="icon files/forward.svg" alt="Forward" class="icon" />
           </button>
         </div>
@@ -62,9 +64,9 @@
 
         <pre id="textElement">placeholder text one</pre>
       </main>
-      <br /><br /><br /><br /><br />
-      <button id="devLogButton" class="hidden">show/hide dev log</button>
-      <pre id="devLog" class="hidden" class="scroller">‎</pre>
+      <br>
+      <br>
+      <textarea id="devLog" class="hidden">‎</textarea>
     </div>
   </body>
 </html>
