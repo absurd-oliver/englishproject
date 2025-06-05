@@ -6,21 +6,23 @@ body {
   color: black;
   transition: background-color 0.3s ease, color 0.3s ease;
   place-items: center;
-  background-image: url("image files/placeholderImgFileName0.jpg");
+  background-image: url("image files/placeholderImgFileName0.jpg"), url("https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg");
   z-index: -1;
 }
 
 .backgroundFilter {
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(5px);
 }
 
 .hidden {
   display: none;
 }
 
-.scroller {
+
+textarea {
   overflow: auto;
-  max-height: 40px;
+  height: 40vh;
+  width: 100%;
 }
 
 header {
@@ -62,7 +64,7 @@ main {
   margin: 20px 0 40px 0;
 }
 
-button {
+.controlButtons {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -78,11 +80,10 @@ button {
   pointer-events: none; /* so clicks hit button, not image */
 }
 
-pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  margin: 1rem auto;
-  max-width: 480px;
-  font-size: 1rem;
-  line-height: 1.4;
+
+#devLogButton {
+  float: middle;
+  border-radius: 5px;
+  background-image: url("icon files/play.svg"), url("https://img.freepik.com/free-vector/blurred-abstract-background-with-sunbeams_1048-5228.jpg?semt=ais_items_boosted&w=740");
+  color:white;
 }
