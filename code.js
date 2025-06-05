@@ -64,151 +64,142 @@ const playIcon = document.getElementById("playIcon");
 const songSelector = document.getElementById("songSelector");
 const devConsole = document.getElementById("devLog");
 const devConsoleButton = document.getElementById("devLogButton");
-const devConsoleButtonText = document.getElementById("devLogButtonText");
-const devToggle = false;
 
+var devToggle = false;
 var currentSongIndex = 0;
 
 // Load song details but do NOT autoplay
 function loadSong(index) {
-  console.log("loadSong() with parameter: " + index + " called successfully");
+  logMain("loadSong() with parameter: " + index + " called successfully");
   const song = songs[index];
-  console.log('called "songs" @ index #' + index);
+  logMain('called "songs" @ index #' + index);
   imgDisplay.src = song.image;
-  console.log("changed image source to: " + song.image);
+  logMain("changed image source to: " + song.image);
   audioSrc.src = song.audio;
-  console.log("changed audio source to: " + song.audio);
+  logMain("changed audio source to: " + song.audio);
   textElem.textContent = song.text;
-  console.log("changed text element content to: " + song.text);
+  logMain("changed text element content to: " + song.text);
   audioElem.load();
-  console.log("loaded audio element");
-  console.log("calling updatePlayIcon()");
+  logMain("loaded audio element");
+  document.getElementsByTagName("body")[0].style.backgroundImage = song.image;
+  logMain("calling updatePlayIcon()");
   updatePlayIcon();
 }
 
 // Play / Pause toggle
 playPauseButton.addEventListener("click", () => {
-  console.log("starting playPauseButton event listener if statement:");
+  logMain("starting playPauseButton event listener if statement:");
   if (audioElem.paused || audioElem.ended) {
     audioElem.play();
-    console.log(".play() @ audio element");
+    logMain(".play() @ audio element");
   } else {
     audioElem.pause();
-    console.log(".pause() @ audio element");
+    logMain(".pause() @ audio element");
   }
-  console.log("playPauseButton event listener if statement ended successfully");
+  logMain("playPauseButton event listener if statement ended successfully");
 });
 
 // Update icon when playback state changes
 audioElem.addEventListener("play", () => {
   playIcon.src = "icon files/pause.svg";
-  console.log("updated playIcon source to: icon files/pause.svg");
+  logMain("updated playIcon source to: icon files/pause.svg");
 });
 
 audioElem.addEventListener("pause", () => {
   playIcon.src = "icon files/play.svg";
-  console.log("updated playIcon source to: icon files/play.svg");
+  logMain("updated playIcon source to: icon files/play.svg");
 });
 
 function updatePlayIcon() {
-  console.log("starting updatePlayIcon function if statement");
+  logMain("starting updatePlayIcon function if statement");
   if (audioElem.paused || audioElem.ended) {
     playIcon.src = "icon files/play.svg";
-    console.log(
+    logMain(
       "updated playIcon source to: icon files/play.svg because the audio file ended or paused"
     );
   } else {
     playIcon.src = "icon files/pause.svg";
-    console.log(
+    logMain(
       "updated playIcon source to: icon files/pause.svg because the audio file didn't end or pause"
     );
   }
-  console.log("updatePlayIcon function if statement ended successfully");
+  logMain("updatePlayIcon function if statement ended successfully");
 }
 
 // Back / Forward buttons
 backButton.addEventListener("click", () => {
-  console.log("starting backButton event listener if statement");
+  logMain("starting backButton event listener if statement");
   if (currentSongIndex === 0) {
     currentSongIndex = 9;
-    console.log("currentSongIndex set to: 9");
+    logMain("currentSongIndex set to: 9");
     songSelector.value = 9;
-    console.log("songSelector.value set to: 9");
-    console.log("calling loadSong() with parameter: 9");
+    logMain("songSelector.value set to: 9");
+    logMain("calling loadSong() with parameter: 9");
     loadSong(currentSongIndex);
   } else {
     currentSongIndex = currentSongIndex - 1;
-    console.log("currentSongIndex set to: " + currentSongIndex);
+    logMain("currentSongIndex set to: " + currentSongIndex);
     songSelector.value = currentSongIndex;
-    console.log("songSelector.value set to: " + currentSongIndex);
-    console.log("calling loadSong() with parameter: " + currentSongIndex);
+    logMain("songSelector.value set to: " + currentSongIndex);
+    logMain("calling loadSong() with parameter: " + currentSongIndex);
     loadSong(currentSongIndex);
   }
-  console.log("backButton event listener if statement ended successfully");
+  logMain("backButton event listener if statement ended successfully");
 });
 
 forwardButton.addEventListener("click", () => {
-  console.log("starting forwardButton event listener if statement");
+  logMain("starting forwardButton event listener if statement");
   if (currentSongIndex === 9) {
     currentSongIndex = 0;
-    console.log("currentSongIndex set to: 0");
+    logMain("currentSongIndex set to: 0");
     songSelector.value = 0;
-    console.log("songSelector.value set to: 0");
-    console.log("calling loadSong() with parameter: 0");
+    logMain("songSelector.value set to: 0");
+    logMain("calling loadSong() with parameter: 0");
     loadSong(currentSongIndex);
   } else {
     currentSongIndex = currentSongIndex + 1;
-    console.log("currentSongIndex set to: " + currentSongIndex);
+    logMain("currentSongIndex set to: " + currentSongIndex);
     songSelector.value = currentSongIndex;
-    console.log("songSelector.value set to: " + currentSongIndex);
-    console.log("calling loadSong() with parameter: " + currentSongIndex);
+    logMain("songSelector.value set to: " + currentSongIndex);
+    logMain("calling loadSong() with parameter: " + currentSongIndex);
     loadSong(currentSongIndex);
   }
-  console.log("forwardButton event listener if statement ended successfully");
+  logMain("forwardButton event listener if statement ended successfully");
 });
 
 // Dropdown change listener
 songSelector.addEventListener("change", (e) => {
-  console.log("songSelector event listener started");
-  console.log("starting dev check if statement");
-  if (songSelector.value != 10){
-    console.log("dev check: false");
+  logMain("songSelector event listener started");
+  logMain("starting dev check if statement");
+  if (songSelector.value != 10) {
+    logMain("dev check: false");
     devConsoleButton.classList.add("hidden");
-    console.log("added hidden class to devConsoleButton");
+    logMain("added hidden class to devConsoleButton");
     currentSongIndex = parseInt(e.target.value);
-    console.log("currentSongIndex set to: " + currentSongIndex);
-    console.log("calling loadSong() with parameter: " + currentSongIndex);
+    logMain("currentSongIndex set to: " + currentSongIndex);
+    logMain("calling loadSong() with parameter: " + currentSongIndex);
     loadSong(currentSongIndex);
   } else {
-    devConsoleButton.classList.remove('hidden');
+    devConsoleButton.classList.remove("hidden");
   }
 });
 
 devConsoleButton.addEventListener("click", () => {
-  console.log("starting devConsoleButton event listener and if statement");
-  if (devToggle === true){
+  logMain("starting devConsoleButton event listener and if statement");
+  if (devToggle === true) {
     devToggle = false;
-    console.log("devToggle set to false, was: true");
+    logMain("devToggle set to false, was: true");
     devConsole.classList.add("hidden");
-    devConsoleButton.classList.add("hidden");
-    devConsoleButtonText.classList.add("hidden");
-    console.log("added hidden class to devConsole");
-    devConsoleButtonText.textContent = 'show dev log';
-    console.log("changed devConsoleButton text to: show dev log");
+    logMain("added hidden class to devConsole");
   } else {
     devToggle = true;
-    console.log("devToggle set to true, was: false");
+    logMain("devToggle set to true, was: false");
     devConsole.classList.remove("hidden");
-    devConsoleButton.classList.remove("hidden");
-    devConsoleButtonText.classList.remove("hidden");
-    console.log("removed hidden class from devConsole");
-    devConsoleButtonText.textContent = 'hide dev log';
-    console.log("changed devConsoleButton text to: hide dev log");
+    logMain("removed hidden class from devConsole");
   }
-  
 });
 
-function logMain(info){
+function logMain(info) {
   console.log(info);
-  devLog.textContent += info + '\n'
+  devLog.textContent += info + "\n";
 }
