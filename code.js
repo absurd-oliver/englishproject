@@ -3,16 +3,19 @@ const songs = [
     audio: "audio files/placeholderAudioFileName1.mp3",
     image: "image files/placeholderImgFileName1.jpg",
     text: "placeholder text one",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName2.mp3",
     image: "image files/placeholderImgFileName2.jpg",
     text: "placeholder text two",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName3.mp3",
     image: "image files/placeholderImgFileName3.jpg",
     text: "placeholder text three",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName4.mp3",
@@ -23,31 +26,37 @@ const songs = [
     audio: "audio files/placeholderAudioFileName5.mp3",
     image: "image files/placeholderImgFileName5.jpg",
     text: "placeholder text five",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName6.mp3",
     image: "image files/placeholderImgFileName6.jpg",
     text: "placeholder text six",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName7.mp3",
     image: "image files/placeholderImgFileName7.jpg",
     text: "placeholder text seven",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName8.mp3",
     image: "image files/placeholderImgFileName8.jpg",
     text: "placeholder text eight",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName9.mp3",
     image: "image files/placeholderImgFileName9.jpg",
     text: "placeholder text nine",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
   {
     audio: "audio files/placeholderAudioFileName0.mp3",
     image: "image files/placeholderImgFileName0.jpg",
     text: "placeholder text ten",
+    onerror: "this.src='https://qodeinteractive.com/magazine/wp-content/uploads/2020/06/16-Tame-Impala.jpg'",
   },
 ];
 
