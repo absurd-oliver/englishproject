@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+      <button id="addButton">add 1</button>
+      <button id="subButton">sub 1</button>
+      <button id="resetButton">reset</button>
+      <br><br>
+      <textarea id='textArea'> </textarea>
+  </body>
+</html>
+
+
+body{
+  text-align: center;
+}
+
+textarea {
+  width: 80%;
+  height: 20vh;
+  user-select: none;
+}
+
+button {
+  margin: 2%;
+  width: calc(100% / 4);
+  height: calc(900vw / 128);
+  border-radius: 1vw;
+  border: 2px solid black;
+  color: black;
+  background-color: white;
+}
+
+
+const addButton = document.getElementById("addButton");
+const subButton = document.getElementById("subButton");
+const resetButton = document.getElementById("resetButton");
+const output = document.getElementById("textArea");
+
+var numVar = 0;
+
+addButton.addEventListener("click", add);
+subButton.addEventListener("click", sub);
+resetButton.addEventListener("click", reset);
+output.addEventListener("change", reset);
+
+function binary(param){
+  return '\n' + param.toString(2);
+}
+
+function add(){
+  numVar += 1;
+  output.value = numVar + binary(numVar) + getPowerOfTwo(numVar);
+}
+
+function sub(){
+  if (numVar > 0){
+    numVar -= 1;
+    output.value = numVar + binary(numVar) + getPowerOfTwo(numVar); 
+  } else {
+    numVar = 0;
+    output.value = numVar + binary(numVar) + getPowerOfTwo(numVar);
+  }
+}
+
+function reset(){
+  numVar = 0;
+  output.value = '0\n0\n2^0-1';
+}
+
+function getPowerOfTwo(number) {
+  if (number <= 0) {
+    return "\n2^0-1";
+  }
+
+  let power = 0;
+  while (Math.pow(2, power) <= number){
+    power++;
+  }
+
+  const closestPowerOfTwo = Math.pow(2, power - 1);
+
+  if (closestPowerOfTwo === number){
+    return `\n2^${power - 1}`;
+  } else {
+    const difference = number - closestPowerOfTwo;
+    return `\n2^${power - 1} + ${difference}`;
+  }
+}
+
+window.onload(output.value = '0\n0\n2^0-1');
