@@ -11,18 +11,39 @@
       <button id="resetButton">reset</button>
       <br><br>
       <textarea id='textArea'> </textarea>
+      <br>
+      <label for='binCounter'>  250ms counter  </label><label for='binCounter2'>  500ms counter  </label><label for='binCounter3'>  1000ms counter  </label>
+      <br>
+      <textarea id='binCounter'>0
+0</textarea>
+      <textarea id='binCounter2'>0
+0</textarea>
+      <textarea id='binCounter3'>0
+0</textarea>
   </body>
 </html>
-
 
 body{
   text-align: center;
 }
 
+#binCounter {
+  width: 20%;
+}
+
+#binCounter2 {
+  width: 20%;
+}
+
+#binCounter3 {
+  width: 20%;
+}
+
 textarea {
   width: 80%;
-  height: 20vh;
+  height: 10vh;
   user-select: none;
+  overflow-y: auto;
 }
 
 button {
@@ -42,6 +63,7 @@ const resetButton = document.getElementById("resetButton");
 const output = document.getElementById("textArea");
 
 var numVar = 0;
+var binCounterNum = 0;
 
 addButton.addEventListener("click", add);
 subButton.addEventListener("click", sub);
@@ -91,5 +113,24 @@ function getPowerOfTwo(number) {
     return `\n2^${power - 1} + ${difference}`;
   }
 }
+
+
+
+setInterval(function() {
+  binCounterNum += 1;
+  let val = binCounterNum.toString(2);
+  updateBinCounter(`${val} \n${binCounterNum}`);
+}, 250);
+
+function updateBinCounter(val){
+  document.getElementById("binCounter").value = val + getPowerOfTwo(binCounterNum);
+}
+
+
+
+
+
+
+
 
 window.onload(output.value = '0\n0\n2^0-1');
